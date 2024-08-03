@@ -1,11 +1,20 @@
 import chromadb
 from chromadb.config import Settings
 import numpy as np
+from sentence_transformers import SentenceTransformer
+import os
+
+# Get API URL and key from environment variables
+API_URL = os.getenv('VECTORDBCLOUD_CHROMADB_API_URL')
+API_KEY = os.getenv('VECTORDBCLOUD_CHROMADB_API_KEY')
 
 # Initialize ChromaDB client
 client = chromadb.Client(Settings(
-    chroma_db_impl="duckdb+parquet",
-    persist_directory="./chroma_db"
+    chroma_api_impl="rest",
+    chroma_server_host=API_URL,
+    chroma_server_http_port="443",
+    chroma_server_ssl_enabled=True,
+    chroma_server_headers={"X-Api-Key": API_KEY}
 ))
 
 # Create or get a collection
@@ -27,9 +36,12 @@ metadatas = [
 ]
 ids = ["doc1", "doc2", "doc3", "doc4"]
 
-# Function to create dummy embeddings (replace with actual embedding function)
+# Initialize the sentence transformer model from Hugging Face
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# Function to create embeddings using the Hugging Face model
 def get_embeddings(texts):
-    return [np.random.rand(384).tolist() for _ in texts]
+    return model.encode(texts).tolist()
 
 # Get embeddings
 embeddings = get_embeddings(documents)
@@ -59,6 +71,4 @@ for i, (doc, metadata, distance) in enumerate(zip(results['documents'][0], resul
     print(f"   Metadata: {metadata}")
     print(f"   Distance: {distance}\n")
 
-# Persist the changes
-client.persist()
-print("Changes persisted to disk")
+print("ChromaDB ingestion and similarity search completed successfully.")
