@@ -1,11 +1,19 @@
-import random
+import os
 from pymilvus import connections, FieldSchema, CollectionSchema, DataType, Collection, utility
+from sentence_transformers import SentenceTransformer
+
+# Get API URL and key from environment variables
+API_URL = os.getenv('VECTORDBCLOUD_MILVUS_API_URL')
+API_KEY = os.getenv('VECTORDBCLOUD_MILVUS_API_KEY')
 
 # Connect to Milvus
-connections.connect("default", host="localhost", port="19530")
+connections.connect("default", uri=API_URL, token=API_KEY)
+
+# Initialize the sentence transformer model from Hugging Face
+model = SentenceTransformer('all-MiniLM-L6-v2')
+dim = model.get_sentence_embedding_dimension()
 
 # Define the collection schema
-dim = 128  # dimension of embedding vector
 fields = [
     FieldSchema(name="id", dtype=DataType.INT64, is_primary=True, auto_id=False),
     FieldSchema(name="title", dtype=DataType.VARCHAR, max_length=200),
@@ -27,10 +35,13 @@ collection.create_index("embedding", index_params)
 
 # Generate some sample data
 num_entities = 1000
+titles = [f"Book Title {i}" for i in range(num_entities)]
+embeddings = model.encode(titles).tolist()
+
 entities = [
     [i for i in range(num_entities)],  # id
-    [f"Book Title {i}" for i in range(num_entities)],  # title
-    [[random.random() for _ in range(dim)] for _ in range(num_entities)]  # embedding
+    titles,  # title
+    embeddings  # embedding
 ]
 
 # Insert the entities
@@ -43,8 +54,11 @@ print(f"Inserted {num_entities} entities into the '{collection_name}' collection
 
 # Perform a vector similarity search
 search_params = {"metric_type": "L2", "params": {"nprobe": 10}}
+query = "A book about adventure"
+query_embedding = model.encode([query]).tolist()[0]
+
 results = collection.search(
-    data=[[random.random() for _ in range(dim)]],  # query vector
+    data=[query_embedding],  # query vector
     anns_field="embedding",
     param=search_params,
     limit=5,
