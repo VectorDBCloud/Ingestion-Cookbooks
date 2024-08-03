@@ -1,15 +1,14 @@
 import psycopg2
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sentence_transformers import SentenceTransformer
+import os
 
-# Connect to your PostgreSQL database
-conn = psycopg2.connect(
-    host="localhost",
-    database="your_database",
-    user="your_username",
-    password="your_password"
-)
+# Get API URL and key from environment variables
+API_URL = os.getenv('VECTORDBCLOUD_API_URL')
+API_KEY = os.getenv('VECTORDBCLOUD_API_KEY')
+
+# Connect to your PostgreSQL database using the API URL and key
+conn = psycopg2.connect(API_URL, password=API_KEY)
 
 # Create a cursor object
 cur = conn.cursor()
@@ -34,7 +33,7 @@ documents = [
     "Is this the fourth document?",
 ]
 
-# Initialize the sentence transformer model
+# Initialize the sentence transformer model from Hugging Face
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Generate embeddings for the documents
