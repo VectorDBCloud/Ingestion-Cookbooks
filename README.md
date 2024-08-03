@@ -1,6 +1,6 @@
 # Ingestion Cookbook
 
-This repository contains a collection of scripts for ingesting data into various vector databases. It serves as a cookbook with recipes (scripts) for advanced data ingestion techniques.
+This repository contains a collection of scripts for ingesting data into various vector databases using open-source embeddings. It serves as a cookbook with recipes (scripts) for advanced data ingestion techniques and similarity search.
 
 ## Supported Vector Databases
 
@@ -13,8 +13,8 @@ This repository contains a collection of scripts for ingesting data into various
 
 1. Clone this repository:
    ```
-   git clone https://github.com/vectordbcloud/ingestion-cookbook.git
-   cd ingestion-cookbook
+   git clone https://github.com/VectorDBCloud/Ingestion-Cookbooks.git
+   cd Ingestion-Cookbooks
    ```
 
 2. Install the required dependencies:
@@ -22,11 +22,35 @@ This repository contains a collection of scripts for ingesting data into various
    pip install -r requirements.txt
    ```
 
-3. Navigate to the specific database directory and follow the instructions in the individual README files.
+3. Set up your environment variables for the Vector Database Cloud API:
+   ```
+   export VECTORDBCLOUD_API_URL=your_api_url
+   export VECTORDBCLOUD_API_KEY=your_api_key
+   ```
+   Note: Specific environment variable names may vary for each database. Check the individual scripts for details.
+
+4. Navigate to the specific database directory and run the Python script.
 
 ## Usage
 
-Each database directory contains a Python script demonstrating data ingestion and basic similarity search. Make sure to update the connection details and customize the data according to your needs.
+Each database directory contains a Python script demonstrating data ingestion and basic similarity search using open-source embeddings. The scripts use the Sentence Transformer model for generating embeddings.
+
+To run a script:
+
+```
+python <database_name>/<script_name>.py
+```
+
+For example:
+```
+python pgvector/pgvector_ingestion.py
+```
+
+Make sure to update the connection details and customize the data according to your needs.
+
+## Vector DB Cookbook
+
+The `vector_db_cookbook.py` script in the root directory demonstrates how to prepare data for multiple vector databases using a unified approach. It's a useful starting point for working with different vector database formats.
 
 ## Contributing
 
