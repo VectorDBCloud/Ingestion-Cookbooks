@@ -39,4 +39,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Disclaimer
 
 These scripts are provided as examples and may need to be adapted to your specific use case and production environment. Always follow best practices for security and performance when working with databases.
-"""
