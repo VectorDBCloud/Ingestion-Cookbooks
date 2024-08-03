@@ -1,4 +1,4 @@
-"""# Ingestion Cookbook
+# Ingestion Cookbook
 
 This repository contains a collection of scripts for ingesting data into various vector databases. It serves as a cookbook with recipes (scripts) for advanced data ingestion techniques.
 
