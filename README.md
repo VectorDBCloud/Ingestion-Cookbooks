@@ -9,17 +9,28 @@ This repository contains a collection of scripts for ingesting data into various
 
 ## Table of Contents
 
-1. [Supported Vector Databases](#supported-vector-databases)
-2. [Prerequisites](#prerequisites)
-3. [Installation](#installation)
-4. [Usage](#usage)
-5. [Vector DB Cookbook](#vector-db-cookbook)
-6. [Best Practices](#best-practices)
-7. [Troubleshooting](#troubleshooting)
-8. [Contribution and Feedback](#contribution-and-feedback)
-9. [Related Resources](#related-resources)
-10. [License](#license)
-11. [Disclaimer](#disclaimer)
+1. [About Vector Database Cloud](#about-vector-database-cloud)
+2. [Introduction](#introduction)
+3. [Supported Vector Databases](#supported-vector-databases)
+4. [Prerequisites](#prerequisites)
+5. [Installation](#installation)
+6. [Usage](#usage)
+7. [Vector DB Cookbook](#vector-db-cookbook)
+8. [Best Practices](#best-practices)
+9. [Troubleshooting](#troubleshooting)
+10. [Contributing](#contributing)
+11. [Related Resources](#related-resources)
+12. [License](#license)
+13. [Disclaimer](#disclaimer)
+
+
+## About Vector Database Cloud
+
+[Vector Database Cloud](https://vectordbcloud.com) is a platform that provides one-click deployment of popular vector databases including Qdrant, Milvus, ChromaDB, and Pgvector on cloud. Our platform ensures a secure API, a comprehensive customer dashboard, efficient vector search, and real-time monitoring.
+
+## Introduction
+
+Vector Database Cloud is designed to seamlessly integrate with your existing data workflows. Whether you're working with structured data, unstructured data, or high-dimensional vectors, you can leverage popular ETL (Extract, Transform, Load) tools to streamline the process of moving data into and out of Vector Database Cloud.
 
 
 ## Supported Vector Databases
@@ -106,9 +117,35 @@ If you encounter issues:
 3. Verify that you have the correct permissions for the Vector Database Cloud services.
 4. For specific error messages, refer to the documentation of the respective vector database or create an issue in this repository.
 
-## Contribution and Feedback
+## Contributing
 
-We encourage contributions to enhance these ingestion scripts. For contributing new scripts or suggesting improvements, please refer to our [Contribution Guidelines](CONTRIBUTING.md). If you encounter issues or have suggestions, please use the issue tracker.
+We welcome contributions to improve and expand our Open-Source Embedding Cookbook! Here's how you can contribute:
+
+1. **Fork the repository**: Create your own fork of the code.
+
+2. **Create a new branch**: Make your changes in a new git branch.
+
+3. **Make your changes**: Enhance existing cookbooks or add new ones.
+
+4. **Follow the style guidelines**: Ensure your code follows our coding standards.
+
+5. **Write clear commit messages**: Your commit messages should clearly describe the changes you've made.
+
+6. **Submit a pull request**: Open a new pull request with your changes.
+
+7. **Respond to feedback**: Be open to feedback and make necessary adjustments to your pull request.
+
+For more detailed information on contributing, please refer to our [Contribution Guidelines](CONTRIBUTING.md).
+
+We also encourage you to:
+
+- Report bugs and issues through our [Issue Tracker](https://github.com/VectorDBCloud/Open-Source-Embedding-Cookbook/issues).
+- Suggest new features or improvements.
+- Help improve documentation.
+- Share your experiences and use cases with the community.
+
+Remember, all contributors are expected to adhere to our [Code of Conduct](CODE_OF_CONDUCT.md). We appreciate your efforts to make this project better for everyone!
+   
 
 ## Related Resources
 
